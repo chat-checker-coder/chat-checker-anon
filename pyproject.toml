@@ -1,0 +1,95 @@
+[tool.poetry]
+name = "chat_checker"
+version = "0.1.0"
+authors = ["chat-checker-coder <anonymous@gmail.com>"]
+description = "A framework for fully automated testing and evaluation of dialogue systems including user simulation, breakdown detection, and dialogue rating."
+readme = "README.md"
+packages = [
+    {include = "chat_checker"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.scripts]
+chat-checker = "chat_checker.cli.application:app"
+
+
+[tool.poetry.dependencies]
+python = ">=3.10 <=3.12"
+pyyaml = "~6.0.2"
+python-dotenv = "~1.0.1"
+numpy = "~2.2.0"
+requests = "~2.32.3"
+python-socketio = "~5.12.1"
+pandas = "~2.2.3"
+matplotlib = "~3.10.1"
+websocket-client = "~1.8.0"
+typer = "~0.15.2"
+litellm = "^1.65.3"
+lexical-diversity = "0.1.1"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "~1.12.1"
+pre-commit = "~4.0.1"
+ruff = "~0.8.6"
+seaborn = "^0.13.2"
+scienceplots = "^2.1.1"
+
+[tool.mypy]
+disable_error_code = ["import-untyped"]
+plugins = ["pydantic.mypy"]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+line-length = 88
+indent-width = 4
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
